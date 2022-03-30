@@ -36,7 +36,7 @@ const Receipt = () => {
           Submit
         </Button>
       </form> */}
-      <table class="mx-auto table-auto">
+      <table className="mx-auto table-auto">
         <thead>
           <tr className="">
             <th className="p-2">PID</th>
