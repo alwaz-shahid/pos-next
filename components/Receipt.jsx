@@ -14,16 +14,16 @@ const Receipt = () => {
   useEffect(() => {});
   const orders = useStore((state) => state.orders);
   const resetCart = useStore((state) => state.resetCart);
-  const { handleSubmit, register } = useForm();
+  //   const { handleSubmit, register } = useForm();
   const addOrder = useStore((state) => state.addOrders);
-  const onSubmit = (data) => {
-    // e.preventDefault();
-    alert(JSON.stringify(data, null, 2));
-    addOrder(data);
-    if (data.pid == "00") {
-      resetCart();
-    }
-  };
+  //   const onSubmit = (data) => {
+  //     // e.preventDefault();
+  //     alert(JSON.stringify(data, null, 2));
+  //     addOrder(data);
+  //     if (data.pid == "00") {
+  //       resetCart();
+  //     }
+  //   };
   return (
     <div className=" min-w-full">
       {/* <form className="w-1/2" onSubmit={handleSubmit(onSubmit)}>

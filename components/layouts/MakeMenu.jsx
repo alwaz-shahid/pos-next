@@ -11,11 +11,11 @@ import {
 import { useRouter } from "next/router";
 import axios from "axios";
 import useStore from "../../store";
-
+import Link from "next/link";
 const MakeMenu = () => {
   const router = useRouter();
 
-  const { handleSubmit, register } = useForm();
+  const { handleSubmit, register, reset } = useForm();
 
   // const onSubmit = async (values) => {
   //   try {
@@ -39,21 +39,24 @@ const MakeMenu = () => {
   const addOrder = useStore((state) => state.addOrders);
 
   const onSubmit = (data) => {
-    e.preventDefault();
+    // e.preventDefault();
     alert(JSON.stringify(data, null, 2));
     addOrder(data);
+    if (data.pid == "00") {
+      resetCart();
+    }
+    reset(data);
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Cinput name="id" register={register} />
+      <Link href="/receipt">Print</Link>
+      <form className="w-1/2" onSubmit={handleSubmit(onSubmit)}>
         <Cinput name="pid" register={register} />
         <Cinput name="name" register={register} />
-        <Cinput name="desc" register={register} />
         <Cinput name="price" register={register} />
-        <Cinput name="discout" register={register} />
-        <Cinput name="new_price" register={register} />
+        <Cinput name="discount" register={register} />
+        <Cinput name="qty" register={register} />
         <Button mt={4} colorScheme="red" type="submit">
           Submit
         </Button>
