@@ -1,41 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Cinput from "../../utils/Cinput";
-import { useForm } from "react-hook-form";
-import {
-  FormErrorMessage,
-  FormLabel,
-  FormControl,
-  Input,
-  Button,
-} from "@chakra-ui/react";
+import { useForm, useWatch } from "react-hook-form";
+import { Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-// import axios from "axios";
 import useStore from "../../store";
 import Link from "next/link";
+import { pdata } from "../../lib/productData";
+import _ from "lodash";
+
+function ChildWatch({ control }) {
+  const productID = useWatch({
+    control,
+    name: "pid",
+  });
+
+  return <p>Watch: {productID}</p>;
+}
+
 const MakeMenu = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const { handleSubmit, register, reset } = useForm();
+  const { handleSubmit, register, reset, control } = useForm();
 
-  // const onSubmit = async (values) => {
-  //   try {
-  //     const data = await axios.post("/api/addp", values, {
-  //       headers: { "Content-Type": "application/json" },
-  //       "Access-Control-Allow-Origin": "*",
-  //       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-  //       "Access-Control-Allow-Headers":
-  //         "Content-Type, Authorization, Content-Length, X-Requested-With",
-  //       "Access-Control-Allow-Credentials": true,
-  //     });
-  //     alert(JSON.stringify(data, null, 2));
-  //     // alert(JSON.stringify(data, null, 2));
-  //   } catch (e) {
-  //     alert(JSON.stringify(values, null, 2));
-  //     alert(e);
-  //   } finally {
-  //     alert(JSON.stringify(values, null, 2));
-  //   }
-  // };
   const addOrder = useStore((state) => state.addOrders);
 
   const onSubmit = (data) => {
@@ -45,29 +31,36 @@ const MakeMenu = () => {
     if (data.pid == "00") {
       resetCart();
     }
-    reset(data);
   };
-  // const firstName = useWatch({
-  //   control,
-  //   name: "firstName",
-  // });
+  useEffect(() => {}, [onSubmit, reset, addOrder]);
   return (
-    <div className="border-2 border-black shadow-inner bg-slate-100 px-5 py-2 f-col">
+    <div className="border-2  shadow-inner bg-slate-100 px-5 py-2 f-col">
       <Link href="/receipt">
         <a className="p-4 text-red-600 hover:underline font-semibold">
           Print Screen
         </a>
       </Link>
-      <form className="" onSubmit={handleSubmit(onSubmit)}>
-        <Cinput name="pid" register={register} />
-        <Cinput name="name" register={register} />
-        <Cinput name="price" register={register} />
-        <Cinput name="discount" register={register} />
-        <Cinput name="qty" register={register} />
-        <Button mt={4} colorScheme="yellow" w="full" type="submit">
-          Submit
-        </Button>
-      </form>
+      <div className="flex justify-between px-2 divide-y-2">
+        <form className="" onSubmit={handleSubmit(onSubmit)}>
+          <Cinput name="pid" register={register} />
+          <Cinput name="name" register={register} />
+          <Cinput name="price" register={register} />
+          <Cinput name="discount" register={register} />
+          <Cinput name="qty" register={register} />
+          <Button mt={4} colorScheme="blue">
+            Add another
+          </Button>
+          <Button mt={4} colorScheme="yellow" w="full" type="submit">
+            Submit
+          </Button>
+        </form>
+
+        <hr />
+        <div className="pl-2">
+          <ChildWatch control={control} />
+        </div>
+      </div>
+      {JSON.stringify(pdata, null, 2)}
     </div>
   );
 };
