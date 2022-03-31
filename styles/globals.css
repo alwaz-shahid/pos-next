@@ -34,9 +34,12 @@ a {
 }
 
 table,
-th,
+th {
+  @apply border-t-[0.5px] border-black;
+  border-collapse: collapse;
+}
 td {
-  @apply border-t border-black;
+  @apply border-t-[0.1px] border-black;
   border-collapse: collapse;
 }
 th,
