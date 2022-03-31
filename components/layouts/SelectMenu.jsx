@@ -15,7 +15,7 @@ const SelectMenu = () => {
     let menuItem = _.filter(data, { pid: pid });
     // alert(JSON.stringify(menuItem[0], null, 2));
     addOrder(menuItem[0]);
-    appendReceipt(menuItem[0].price);
+    appendReceipt(menuItem[0].final_price);
   };
   let final_p = grandTotal(storeReceipt);
   useEffect(() => {}, [addOrder, storeReceipt, appendReceipt, setItem]);
@@ -25,14 +25,13 @@ const SelectMenu = () => {
       {storeReceipt.map((item) => (
         <p>{item}</p>
       ))}
-      {pdata.map((item, k) => {
+      {pdata.map((item) => {
         return (
-          <div key={k} className="flex flex-col">
+          <div className="flex flex-col">
             <p className="p-2 flex">
-              {Object.keys(item).map((ikey, i) => (
+              {Object.keys(item).map((ikey) => (
                 <div
                   onClick={() => setItem(item.pid)}
-                  key={i}
                   className=" bg-blue-200 hover:bg-blue-400 text-lg text-gray-900 font-semibold"
                 >
                   <p className="p-2">{ikey}</p>
