@@ -1,12 +1,10 @@
 import "../styles/globals.css";
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
-import "../styles/globals.css";
-// import "tailwindcss/dist/base.min.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <section className="bg-grey-200 min-h-screen">
+    <section className="bg-slate-100 f-col flex-1 min-h-screen">
       <ChakraProvider>
         <Head>{/* <script src="https://cdn.tailwindcss.com"></script> */}</Head>
         {/* <h1>Picante POS</h1>\ */}

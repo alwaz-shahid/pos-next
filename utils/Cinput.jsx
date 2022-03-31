@@ -23,6 +23,8 @@ const Cinput = ({
       {/* <FormControl isInvalid={errors.name}> */}
       {/* <FormLabel htmlFor={name}>First name</FormLabel> */}
       <Input
+        colorScheme="blackAlpha"
+        shadow={1}
         m={2}
         id={name}
         placeholder={name}

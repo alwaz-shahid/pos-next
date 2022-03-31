@@ -39,21 +39,21 @@ const Receipt = () => {
       <table className="mx-auto table-auto">
         <thead>
           <tr className="">
-            <th className="p-2">PID</th>
-            <th className="p-2">Name</th>
-            <th className="p-2">Price</th>
-            <th className="p-2">Qty</th>
-            <th className="p-2">Discount</th>
+            <th className="p-2 underline">PID</th>
+            <th className="p-2 underline">Name</th>
+            <th className="p-2 underline">Price</th>
+            <th className="p-2 underline">Qty</th>
+            <th className="p-2 underline">Discount</th>
           </tr>
         </thead>
         <tbody>
           {orders.map((order, i) => (
             <tr key={i}>
-              <td className="pb-1 border-b-1"> {order?.pid}</td>
-              <td className="pb-1 border-b-1">{order?.name}</td>
-              <td className="pb-1 border-b-1">{order?.price}</td>
-              <td className="pb-1 border-b-1">{order?.qty}</td>
-              <td className="pb-1 border-b-1">{order?.discount}</td>
+              <td className="pb-1"> {order?.pid}</td>
+              <td className="pb-1">{order?.name}</td>
+              <td className="pb-1">{order?.price}</td>
+              <td className="pb-1">{order?.qty}</td>
+              <td className="pb-1">{order?.discount}</td>
             </tr>
           ))}
         </tbody>

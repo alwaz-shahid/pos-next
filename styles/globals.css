@@ -1,7 +1,16 @@
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
+
+/* @import "tailwindcss/base"; */
+/* @import "tailwindcss/components"; */
+/* @import './base.css'; */
+/* @import "tailwindcss/utilities";
+ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 html,
 body {
@@ -18,4 +27,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.f-col {
+  @apply flex flex-col items-center justify-start;
 }

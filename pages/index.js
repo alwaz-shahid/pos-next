@@ -15,8 +15,8 @@ export default function Home() {
       </Head>
 
       <div>
+        <h1 className="text-4xl p-3 mx-auto font-bold">POS</h1>
         <Receipt />
-        <h1 className="text-xl text-blue-500">Hello World</h1>
         <MakeMenu />
       </div>
     </div>

@@ -47,17 +47,24 @@ const MakeMenu = () => {
     }
     reset(data);
   };
-
+  // const firstName = useWatch({
+  //   control,
+  //   name: "firstName",
+  // });
   return (
-    <div>
-      <Link href="/receipt">Print</Link>
-      <form className="w-1/2" onSubmit={handleSubmit(onSubmit)}>
+    <div className="border-2 border-black shadow-inner bg-slate-100 px-5 py-2 f-col">
+      <Link href="/receipt">
+        <a className="p-4 text-red-600 hover:underline font-semibold">
+          Print Screen
+        </a>
+      </Link>
+      <form className="" onSubmit={handleSubmit(onSubmit)}>
         <Cinput name="pid" register={register} />
         <Cinput name="name" register={register} />
         <Cinput name="price" register={register} />
         <Cinput name="discount" register={register} />
         <Cinput name="qty" register={register} />
-        <Button mt={4} colorScheme="red" type="submit">
+        <Button mt={4} colorScheme="yellow" w="full" type="submit">
           Submit
         </Button>
       </form>
