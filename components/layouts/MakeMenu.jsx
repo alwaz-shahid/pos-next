@@ -9,14 +9,14 @@ import { pdata } from "../../lib/productData";
 import _ from "lodash";
 import Receipt from "../Receipt";
 
-function ChildWatch({ control }) {
-  const productID = useWatch({
-    control,
-    name: "pid",
-  });
+// function ChildWatch({ control }) {
+//   const productID = useWatch({
+//     control,
+//     name: "pid",
+//   });
 
-  return <p>Watch: {productID}</p>;
-}
+//   return <p>Watch: {productID}</p>;
+// }
 
 const MakeMenu = () => {
   // const router = useRouter();
@@ -57,7 +57,6 @@ const MakeMenu = () => {
 
         <div className="pl-2 flex">
           <Receipt />
-          <ChildWatch control={control} />
         </div>
       </div>
       {/* {JSON.stringify(pdata, null, 2)} */}

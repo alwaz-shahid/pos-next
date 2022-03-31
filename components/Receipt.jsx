@@ -43,7 +43,7 @@ const Receipt = () => {
       <div className=" p-1 min-w-full font-light text-sm">
         <div className="flex justify-between border-t border-b p-1 border-black">
           <p>Grand Total :</p>
-          <p className="font-semibold">RS: {final_p}</p>
+          <p className="font-semibold">RS: {final_p.toFixed(2)}</p>
         </div>
         <hr />
         <div className="flex justify-between ">

@@ -28,15 +28,15 @@ const SelectMenu = () => {
       {pdata.map((item, k) => {
         return (
           <div key={k} className="flex flex-col">
-            <p className="p-2 flex">
+            <p className="p-1 bg-blue-200 hover:bg-blue-400  flex">
               {Object.keys(item).map((ikey, i) => (
                 <div
                   onClick={() => setItem(item.pid)}
                   key={i}
-                  className=" bg-blue-200 hover:bg-blue-400 text-lg text-gray-900 font-semibold"
+                  className=" text-sm text-gray-900 font-semibold"
                 >
-                  <p className="p-2">{ikey}</p>
-                  <p className="p-2">{item[ikey]}</p>
+                  <p className="p-1">{ikey}</p>
+                  <p className="p-1">{item[ikey]}</p>
                 </div>
               ))}
             </p>
