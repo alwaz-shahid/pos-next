@@ -21,17 +21,18 @@ const SelectMenu = () => {
   useEffect(() => {}, [addOrder, storeReceipt, appendReceipt, setItem]);
   return (
     <div>
-      {final_p}
+      {/* {final_p}
       {storeReceipt.map((item) => (
         <p>{item}</p>
-      ))}
-      {pdata.map((item) => {
+      ))} */}
+      {pdata.map((item, k) => {
         return (
-          <div className="flex flex-col">
+          <div key={k} className="flex flex-col">
             <p className="p-2 flex">
-              {Object.keys(item).map((ikey) => (
+              {Object.keys(item).map((ikey, i) => (
                 <div
                   onClick={() => setItem(item.pid)}
+                  key={i}
                   className=" bg-blue-200 hover:bg-blue-400 text-lg text-gray-900 font-semibold"
                 >
                   <p className="p-2">{ikey}</p>

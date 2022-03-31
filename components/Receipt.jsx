@@ -29,7 +29,7 @@ const Receipt = () => {
         </thead>
         <tbody>
           {orders.map((order, i) => (
-            <tr >
+            <tr key={i}>
               {/* <td className="mb-1"> {order?.pid}</td> */}
               <td className="mb-1 ">{order?.name}</td>
               <td className="mb-1">{order?.price}</td>
