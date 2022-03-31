@@ -4,6 +4,9 @@ import MakeMenu from "../components/layouts/MakeMenu";
 import OrderEntry from "../components/layouts/OrderEntry";
 import Receipt from "../components/Receipt";
 import styles from "../styles/Home.module.css";
+import _ from "lodash";
+import { pdata } from "../lib/productData";
+import SelectMenu from "../components/layouts/SelectMenu";
 
 export default function Home() {
   return (
@@ -16,8 +19,9 @@ export default function Home() {
 
       <div>
         <h1 className="text-4xl p-3 mx-auto font-bold">POS</h1>
-        <Receipt />
+        {/* <Receipt /> */}
         <MakeMenu />
+        <SelectMenu />
       </div>
     </div>
   );

@@ -32,3 +32,15 @@ a {
 .f-col {
   @apply flex flex-col items-center justify-start;
 }
+
+table,
+th,
+td {
+  @apply border-t border-black;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 5px;
+  text-align: left;
+}

@@ -7,6 +7,7 @@ import useStore from "../../store";
 import Link from "next/link";
 import { pdata } from "../../lib/productData";
 import _ from "lodash";
+import Receipt from "../Receipt";
 
 function ChildWatch({ control }) {
   const productID = useWatch({
@@ -23,23 +24,20 @@ const MakeMenu = () => {
   const { handleSubmit, register, reset, control } = useForm();
 
   const addOrder = useStore((state) => state.addOrders);
+  const resetC = useStore((state) => state.resetCart);
 
   const onSubmit = (data) => {
     // e.preventDefault();
-    alert(JSON.stringify(data, null, 2));
+    // alert(JSON.stringify(data, null, 2));
     addOrder(data);
-    if (data.pid == "00") {
-      resetCart();
+    if (data.pid == "0000") {
+      resetC();
     }
+    reset();
   };
   useEffect(() => {}, [onSubmit, reset, addOrder]);
   return (
     <div className="border-2  shadow-inner bg-slate-100 px-5 py-2 f-col">
-      <Link href="/receipt">
-        <a className="p-4 text-red-600 hover:underline font-semibold">
-          Print Screen
-        </a>
-      </Link>
       <div className="flex justify-between px-2 divide-y-2">
         <form className="" onSubmit={handleSubmit(onSubmit)}>
           <Cinput name="pid" register={register} />
@@ -47,20 +45,22 @@ const MakeMenu = () => {
           <Cinput name="price" register={register} />
           <Cinput name="discount" register={register} />
           <Cinput name="qty" register={register} />
-          <Button mt={4} colorScheme="blue">
-            Add another
-          </Button>
           <Button mt={4} colorScheme="yellow" w="full" type="submit">
-            Submit
+            Add
           </Button>
+          <Link href="/receipt">
+            <Button mt={4} colorScheme="blue">
+              <a className="p-4 hover:underline font-semibold">Print Recepit</a>
+            </Button>
+          </Link>
         </form>
 
-        <hr />
-        <div className="pl-2">
+        <div className="pl-2 flex">
+          <Receipt />
           <ChildWatch control={control} />
         </div>
       </div>
-      {JSON.stringify(pdata, null, 2)}
+      {/* {JSON.stringify(pdata, null, 2)} */}
     </div>
   );
 };
