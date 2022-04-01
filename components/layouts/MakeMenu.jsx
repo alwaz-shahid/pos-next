@@ -35,27 +35,41 @@ const MakeMenu = () => {
     }
     reset();
   };
+  const [addManaul, setAddManaul] = useState(false);
   useEffect(() => {}, [onSubmit, reset, addOrder]);
+
   return (
     <div className="border-2  shadow-inner bg-slate-100 px-5 py-2 f-col">
       <div className="flex justify-between px-2 divide-y-2">
-        <form className="" onSubmit={handleSubmit(onSubmit)}>
-          <Cinput name="pid" register={register} />
-          <Cinput name="name" register={register} />
-          <Cinput name="price" register={register} />
-          <Cinput name="discount" register={register} />
-          <Cinput name="qty" register={register} />
-          <Button mt={4} colorScheme="yellow" w="full" type="submit">
-            Add
+        {addManaul && (
+          <form className="" onSubmit={handleSubmit(onSubmit)}>
+            <Cinput name="pid" register={register} />
+            <Cinput name="name" register={register} />
+            <Cinput name="price" register={register} />
+            <Cinput name="qty" register={register} />
+            <Cinput name="discount" register={register} />
+            <Cinput name="  discounted_price" register={register} />
+            <Cinput name="  final_price" register={register} />
+            <Button mt={4} colorScheme="yellow" w="full" type="submit">
+              Add
+            </Button>
+          </form>
+        )}
+
+        <div className="pl-2 flex flex-col">
+          <Button
+            my={2}
+            colorScheme="yellow"
+            onClick={() => setAddManaul(!addManaul)}
+          >
+            Add Manaul
           </Button>
           <Link href="/receipt">
-            <Button mt={4} colorScheme="blue">
+            <Button my={2} colorScheme="blue">
               <a className="p-4 hover:underline font-semibold">Print Recepit</a>
             </Button>
           </Link>
-        </form>
 
-        <div className="pl-2 flex">
           <Receipt />
         </div>
       </div>

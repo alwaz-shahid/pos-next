@@ -1,38 +1,62 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { grandTotal } from "../lib/billUtils";
 import useStore from "../store";
 import dayjs from "dayjs";
+import { Input } from "@chakra-ui/react";
 
 const Receipt = () => {
+  const [editing, setEditing] = useState(false);
   let now = dayjs();
   const nowTime = now.format("h:mm a");
   const nowDate = now.format("MMMM D YYYY");
   const orders = useStore((state) => state.orders);
   const resetCart = useStore((state) => state.resetCart);
 
+  const [data, setData] = useState(orders);
   const addOrder = useStore((state) => state.addOrders);
   const storeReceipt = useStore((state) => state.receipt);
   let final_p = grandTotal(storeReceipt);
-  useEffect(() => {}, [orders, resetCart, addOrder, final_p]);
+
+  const updateFieldChanged = (index) => (e) => {
+    alert("index: " + index);
+    alert("property name: " + e.target.name);
+    alert("property value: " + e.target.value);
+
+    let newArr = [...data]; // copying the old datas array
+    newArr[index] = e.target.value; // replace e.target.value with whatever you want to change it to
+    setData(newArr);
+  };
+  const updateEdit = () => {
+    setEditing(true);
+  };
+  useEffect(() => {}, [
+    orders,
+    resetCart,
+    addOrder,
+    final_p,
+    editing,
+    updateFieldChanged,
+    updateEdit,
+  ]);
   return (
-    <div className="w-80 font-normal max-w-max min-w-fit overflow-hidden f-col">
-      <table className="mx-auto table-auto text-sm">
+    <div className="w-80 font-normal max-w-max min-w-fit overflow-hidden f-col text-black">
+      <table className="mx-auto table-auto text-sm" onClick={updateEdit}>
         <thead>
           <tr className="font-normal">
-            {/* <th className="m-2 underline">PID |</th> */}
+            <th className="m-2 underline">#</th>
             <th className="m-2 px-2"> Name </th>
             <th className="m-2 px-2">Price (PKR)</th>
             <th className="m-2 px-2">Qty </th>
-            <th className="m-2 px-2">Discount (15%)</th>
+            <th className="m-2 px-2">Discount</th>
             <th className="m-2 px-2">Final </th>
           </tr>
         </thead>
         <tbody>
-          {orders.map((order, i) => (
+          {orders?.map((order, i) => (
             <tr key={i}>
-              {/* <td className="mb-1"> {order?.pid}</td> */}
+              <td className="mb-1"> {i}</td>
               <td className="mb-1 ">{order?.name}</td>
-              <td className="mb-1">{order?.price}</td>
+              <td className="mb-1">{order?.price.toFixed(2)}</td>
               <td className="mb-1">{order?.qty}</td>
               <td className="mb-1">{order?.discounted_price.toFixed(2)}</td>
               <td className="mb-1">{order?.final_price}</td>
@@ -54,6 +78,14 @@ const Receipt = () => {
           <p>Time :</p>
           <p>{nowTime}</p>
         </div>
+        {editing && (
+          <Input
+            color={"blue.700"}
+            colorScheme="orange"
+            name="name"
+            onChange={updateFieldChanged(0)}
+          />
+        )}
       </div>
     </div>
   );
