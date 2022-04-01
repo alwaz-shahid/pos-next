@@ -56,9 +56,9 @@ const Receipt = () => {
             <tr key={i}>
               <td className="mb-1"> {i}</td>
               <td className="mb-1 ">{order?.name}</td>
-              <td className="mb-1">{order?.price.toFixed(2)}</td>
               <td className="mb-1">{order?.qty}</td>
               <td className="mb-1">{order?.discounted_price.toFixed(2)}</td>
+              <td className="mb-1">{order?.price.toFixed(2)}</td>
               <td className="mb-1">{order?.final_price}</td>
             </tr>
           ))}
