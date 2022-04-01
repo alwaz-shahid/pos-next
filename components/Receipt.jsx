@@ -45,10 +45,10 @@ const Receipt = () => {
           <tr className="font-normal">
             <th className="m-2 underline">#</th>
             <th className="m-2 px-2"> Name </th>
-            <th className="m-2 px-2">Price (PKR)</th>
             <th className="m-2 px-2">Qty </th>
             <th className="m-2 px-2">Discount</th>
-            <th className="m-2 px-2">Final </th>
+            <th className="m-2 px-2">Price (PKR)</th>
+            <th className="m-2 px-2">Total </th>
           </tr>
         </thead>
         <tbody>
